@@ -333,7 +333,7 @@ if __name__ == '__main__':
 
 
     # Load the checkpoint into the model
-    checkpoint_path = "/content/drive/MyDrive/SSL4EO/Output/ckps/random/99-0.22-0.73.ckpt"
+    checkpoint_path = "/content/drive/MyDrive/ChangeDetection/Output/ckps/random/9-0.37-0.59.ckpt"
     checkpoint = torch.load(checkpoint_path, map_location=torch.device('cpu'))
     model.load_state_dict(checkpoint['state_dict'])
     model = model.to(device)
@@ -345,7 +345,7 @@ if __name__ == '__main__':
 
     print(f"Total trainable parameters: {count_parameters(model)}")
     
-    path = "/content/drive/MyDrive/SSL4EO/Images"
+    path = "/content/drive/MyDrive/ChangeDetection/Images"
     file_names = [os.path.basename(x) for x in glob(os.path.join(path+"/before", '*.tif'))]
     
     counter = 0
@@ -393,10 +393,8 @@ if __name__ == '__main__':
 
 
 
-        output = "/content/drive/MyDrive/SSL4EO/Output/Inference/"
+        output = "/content/drive/MyDrive/ChangeDetection/Output/Inference/"
         out_file = output + name
         meta.update(dtype=rasterio.int16, count=1, compress='lzw', nodata=-9999)
         with rasterio.open(out_file, 'w', **meta) as dest:
-                dest.write(pred.astype(rasterio.int32), 1)   
-   
-        
+                dest.write(pred.astype(rasterio.int32), 1) 
