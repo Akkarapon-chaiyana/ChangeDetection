@@ -134,7 +134,7 @@ class SiamSegment(LightningModule):
             plt.title('Prediction')
 
             plt.tight_layout()
-            figure_path = f'/content/drive/MyDrive/ChangeDetection/Output/Validation_Figures/Batch{batch_idx}_Img{i}.png'
+            figure_path = f'/content/drive/MyDrive/ChangeDetection/Output/Validations_Figures/Batch{batch_idx}_Img{i}.png'
             plt.savefig(figure_path)
             plt.savefig(figure_path)
             plt.close()
