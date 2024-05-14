@@ -14,8 +14,8 @@ from pytorch_lightning.loggers import TensorBoardLogger
 from pytorch_lightning.callbacks import ModelCheckpoint
 from torchmetrics import Precision, Recall, F1Score
 
-from datasets.oscd_datamodule_inference import ChangeDetectionDataModule
-from models.segmentation import get_segmentation_model
+from oscd_datamodule_inference import ChangeDetectionDataModule
+from segmentation import get_segmentation_model
 # from models.moco2_module import MocoV2
 from pytorch_lightning.callbacks.early_stopping import EarlyStopping
 import matplotlib.pyplot as plt
