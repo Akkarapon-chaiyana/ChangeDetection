@@ -4,7 +4,7 @@ from torch.utils.data import DataLoader
 from torchvision.transforms import functional as TF
 from pytorch_lightning import LightningDataModule
 
-from datasets.oscd_dataset_forest import ChangeDetectionDataset
+from oscd_dataset_forest import ChangeDetectionDataset
 
 
 ALL_BANDS = ['B01', 'B02', 'B03', 'B04', 'B05', 'B06', 'B07', 'B08', 'B8A', 'B09', 'B10', 'B11', 'B12']
