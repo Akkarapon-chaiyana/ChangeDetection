@@ -206,9 +206,9 @@ def getData(i):
     sample  = ee.Feature(samples.get(i))
     #print(sample.getInfo())
         
-    img_path_before = f"/content/drive/MyDrive/SSL4EO/Images/before/v2"+str(i).zfill(4) + ".tif"
-    img_path_after =f"/content/drive/MyDrive/SSL4EO/Images/after/v2"+str(i).zfill(4) + ".tif"
-    img_path_label = f"/content/drive/MyDrive/SSL4EO/Images/label/v2"+str(i).zfill(4) + ".tif"
+    img_path_before = f"/content/drive/MyDrive/ChangeDetection/Images/before/v2"+str(i).zfill(4) + ".tif"
+    img_path_after =f"/content/drive/MyDrive/ChangeDetection/Images/after/v2"+str(i).zfill(4) + ".tif"
+    img_path_label = f"/content/drive/MyDrive/ChangeDetection/Images/label/v2"+str(i).zfill(4) + ".tif"
 
     geometry = sample.geometry()
     
