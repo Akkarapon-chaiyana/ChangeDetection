@@ -134,12 +134,12 @@ class SiamSegment(LightningModule):
             plt.title('Prediction')
 
             plt.tight_layout()
-            figure_path = f'/content/drive/MyDrive/SSL4EO/Output/Validation_Figures/Batch{batch_idx}_Img{i}.png'
+            figure_path = f'/content/drive/MyDrive/ChangeDetection/Output/Validation_Figures/Batch{batch_idx}_Img{i}.png'
             plt.savefig(figure_path)
             plt.savefig(figure_path)
             plt.close()
 
-            tif_path = f'/content/drive/MyDrive/SSL4EO/Output/Prediction_TIFFs/Batch{batch_idx}_Img{i}.tif'
+            tif_path = f'/content/drive/MyDrive/ChangeDetection/Output/Prediction_TIFFs/Batch{batch_idx}_Img{i}.tif'
             img_tif = Image.fromarray(pred_visual)
             img_tif.save(tif_path, format='TIFF')
             
