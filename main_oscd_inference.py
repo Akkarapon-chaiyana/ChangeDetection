@@ -346,7 +346,7 @@ if __name__ == '__main__':
     print(f"Total trainable parameters: {count_parameters(model)}")
     
     path = "/content/drive/MyDrive/ChangeDetection/Images"
-    file_names = [os.path.basename(x) for x in glob(os.path.join(path+"/before", '*.tif'))]
+    file_names = [os.path.basename(x) for x in glob(os.path.join(path+"/after", '*.tif'))]
     
     counter = 0
     for name in file_names:
