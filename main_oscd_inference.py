@@ -333,7 +333,7 @@ if __name__ == '__main__':
 
 
     # Load the checkpoint into the model
-    checkpoint_path = "/content/drive/MyDrive/ChangeDetection/Output/ckps/random/9-0.37-0.59.ckpt"
+    checkpoint_path = "/content/drive/MyDrive/ChangeDetection/Output/ckps/random/*.ckpt"
     checkpoint = torch.load(checkpoint_path, map_location=torch.device('cpu'))
     model.load_state_dict(checkpoint['state_dict'])
     model = model.to(device)
