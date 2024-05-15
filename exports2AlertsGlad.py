@@ -200,7 +200,7 @@ def addMyClass(feat):
 def getData(i): 
     #mySamples = ee.FeatureCollection("projects/earthengine-legacy/assets/projects/servir-mekong/Cambodia_ForestAlert/plws_all").randomColumn("random").sort("random").map(addClass)
     #mySamples = ee.FeatureCollection("projects/servir-mekong/Cambodia_ForestAlert/npcmv1").randomColumn("random").sort("random").map(addClassnpcm)
-    mySamples = ee.FeatureCollection("projects/cipalawan/assets/monthlyAlert/20210200").randomColumn("random").sort("random").map(addMyClass)
+    mySamples = ee.FeatureCollection("projects/ee-akkaraponchaiyana/assets/Tony/AlertMonthly_20210200").randomColumn("random").sort("random").map(addMyClass)
     #print(mySamples.size().getInfo())
     samples = mySamples.toList(5000)
     sample  = ee.Feature(samples.get(i))
