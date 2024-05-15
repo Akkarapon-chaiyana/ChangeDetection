@@ -333,8 +333,9 @@ if __name__ == '__main__':
 
 
     # Load the checkpoint into the model
-    checkpoint_path = "/content/drive/MyDrive/ChangeDetection/Output/ckps/random/*.ckpt"
-    checkpoint = torch.load(checkpoint_path, map_location=torch.device('cpu'))
+    pathRan = "/content/drive/MyDrive/ChangeDetection/Output/ckps/random"
+    checkpoint_path = glob(os.path.join(pathRan, '*.ckpt'))
+    checkpoint = torch.load(checkpoint_path[0], map_location=torch.device('cpu'))
     model.load_state_dict(checkpoint['state_dict'])
     model = model.to(device)
     model.eval()
