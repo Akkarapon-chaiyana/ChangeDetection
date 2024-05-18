@@ -28,14 +28,14 @@ from glob import glob
 
 # Check if CUDA is available
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-print(f"Using device: {device}")
+#print(f"Using device: {device}")
 #device = torch.device("cpu")
 
 # If CUDA is not available and you expect it should be, raise an error or warning
 if device.type == 'cuda':
-    print(f"Number of GPUs available: {torch.cuda.device_count()}")
+    #print(f"Number of GPUs available: {torch.cuda.device_count()}")
 else:
-    print("CUDA is not available. Using CPU instead.")
+    #print("CUDA is not available. Using CPU instead.")
 
 def get_args():
     parser = ArgumentParser()
@@ -100,7 +100,7 @@ class SiamSegment(LightningModule):
         return loss
 
     def validation_step(self, batch, batch_idx):
-        print("batch",batch[0].shape)
+        #print("batch",batch[0].shape)
         img_1, img_2, pred = self.shared_step(batch)
         #self.log('val/loss', loss, prog_bar=True,sync_dist=True)
         #self.log('val/precision', prec, on_step=False, on_epoch=True, prog_bar=True,sync_dist=True)
@@ -123,7 +123,7 @@ class SiamSegment(LightningModule):
         """
 
         num_images = len(img_1)  # Number of images in the batch
-        print(num_images)
+        #print(num_images)
 
         for i in range(num_images):
             if args.nc == 3:
@@ -201,7 +201,7 @@ def load_ssl_resnet_encoder(net, ckp_path, pf_sdict='module.encoder_q.'):
     assert set(msg.missing_keys) == {"fc.weight", "fc.bias"}
     
     # print ckp info after succussfully loading it
-    print(f"Checkpoint has been loaded from \'{ckp_path}\'!")
+    #print(f"Checkpoint has been loaded from \'{ckp_path}\'!")
     
     return net
 
@@ -226,7 +226,7 @@ def normalize_image(img, value_discard=True):
 
     if value_discard:
         img = (img - min_q[:, None, None]) / (max_q[:, None, None] - min_q[:, None, None])
-        print("img")
+        #print("img")
     else:
         img = img / 10000
 
@@ -285,7 +285,7 @@ if __name__ == '__main__':
     # args
     args = get_args()
     
-    print(args)
+    #print(args)
 
 
     # dataloader
@@ -312,12 +312,12 @@ if __name__ == '__main__':
         feature_channels=(64, 256, 512, 1024, 2048)
     else:
         raise ValueError()
-    print(f'Construct the backbone of resnet{args.resnet_type}-initialization: {args.init_type}.')
+    #print(f'Construct the backbone of resnet{args.resnet_type}-initialization: {args.init_type}.')
     
     # change the number of input channels of backbone
     if args.nc != 3:
         backbone.conv1 = torch.nn.Conv2d(args.nc, 64, 7, stride=2, padding=3, bias=False)
-        print(f'Modify the number of inputs of the backbone to {args.nc}.')
+        #print(f'Modify the number of inputs of the backbone to {args.nc}.')
     
     # fix backbone layers
     for name, param in backbone.named_parameters():
@@ -325,7 +325,7 @@ if __name__ == '__main__':
 
     # load ckp if given
     if args.ckp_path:
-        print("fixing backbone")
+        #print("fixing backbone")
         backbone = load_ssl_resnet_encoder(backbone, args.ckp_path)
         # args.init_type = 'ssl'
 
@@ -344,7 +344,7 @@ if __name__ == '__main__':
     def count_parameters(model):
         return sum(p.numel() for p in model.parameters() if p.requires_grad)
 
-    print(f"Total trainable parameters: {count_parameters(model)}")
+    #print(f"Total trainable parameters: {count_parameters(model)}")
     
     path = "/content/drive/MyDrive/ChangeDetection/Images"
     file_names = [os.path.basename(x) for x in glob(os.path.join(path+"/after", '*.tif'))]
