@@ -32,9 +32,9 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 #device = torch.device("cpu")
 
 # If CUDA is not available and you expect it should be, raise an error or warning
-if device.type == 'cuda':
+#if device.type == 'cuda':
     #print(f"Number of GPUs available: {torch.cuda.device_count()}")
-else:
+#else:
     #print("CUDA is not available. Using CPU instead.")
 
 def get_args():
