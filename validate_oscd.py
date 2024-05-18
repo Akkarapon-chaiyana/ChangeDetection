@@ -100,9 +100,9 @@ class SiamSegment(LightningModule):
         import matplotlib.pyplot as plt
         num_images = len(img_1) # Number of images in the batch
 
-        print(f'Now is processing and exporting with {num_images} images')
+        #print(f'Now is processing and exporting with {num_images} images')
 
-        print(type(img_1[0]))
+        #print(type(img_1[0]))
         
         for i in range(num_images):
             if args.nc == 3:
@@ -180,7 +180,7 @@ def load_ssl_resnet_encoder(net, ckp_path, pf_sdict='module.encoder_q.'):
     assert set(msg.missing_keys) == {"fc.weight", "fc.bias"}
     
     # print ckp info after succussfully loading it
-    print(f"Checkpoint has been loaded from \'{ckp_path}\'!")
+    #print(f"Checkpoint has been loaded from \'{ckp_path}\'!")
     
     return net
 
@@ -214,12 +214,12 @@ if __name__ == '__main__':
         feature_channels=(64, 256, 512, 1024, 2048)
     else:
         raise ValueError()
-    print(f'Construct the backbone of resnet{args.resnet_type}-initialization: {args.init_type}.')
+    #print(f'Construct the backbone of resnet{args.resnet_type}-initialization: {args.init_type}.')
     
     # change the number of input channels of backbone
     if args.nc != 3:
         backbone.conv1 = torch.nn.Conv2d(args.nc, 64, 7, stride=2, padding=3, bias=False)
-        print(f'Modify the number of inputs of the backbone to {args.nc}.')
+        #print(f'Modify the number of inputs of the backbone to {args.nc}.')
     
     # fix backbone layers
     for name, param in backbone.named_parameters():
